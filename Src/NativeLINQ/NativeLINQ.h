@@ -244,11 +244,11 @@ public:
 
 
 	std::shared_ptr<IEnumerator<TResult>> GetEnumerator() override final {
-		return shared_from_this();
+		return this->shared_from_this();
 	}
 
 	std::shared_ptr<IEnumerator<TResult>> AsEnumerator() override final {
-		return shared_from_this();
+		return this->shared_from_this();
 	}
 
 	TResult First(std::function<bool(TResult)> predicate) {
@@ -489,9 +489,9 @@ struct WhereIterator : public Iterator<typename std::iterator_traits<TSourceIter
 	bool MoveNext() override {
 		while(true) {
 			//step next value
-			if(_resetted) {
+			if(this->_resetted) {
 				_current = _begin;
-				_resetted = false;
+				this->_resetted = false;
 			} else {
 				if(_current == _end) {
 					return false;
@@ -504,7 +504,7 @@ struct WhereIterator : public Iterator<typename std::iterator_traits<TSourceIter
 
 			auto& item = *_current;
 			if(_predicate(item)) {
-				_currentValue = item;
+				this->_currentValue = item;
 				return true;
 			}
 		}
