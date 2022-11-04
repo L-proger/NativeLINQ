@@ -5,6 +5,6 @@ add_library(${PROJECT_NAME} INTERFACE)
 target_include_directories(${PROJECT_NAME} INTERFACE ./Src)
 
 target_sources(${PROJECT_NAME}
-INTERFACE
+PUBLIC
     Src/NativeLINQ/NativeLINQ.h
 )
