@@ -446,9 +446,9 @@ struct WhereSelectIterator : public Iterator<TResult>{
 	bool MoveNext() override {
 		while(true) {
 			//step next value
-			if(_resetted) {
+			if(this->_resetted) {
 				_current = _begin;
-				_resetted = false;
+				this->_resetted = false;
 			} else {
 				if(_current == _end) {
 					return false;
@@ -460,7 +460,7 @@ struct WhereSelectIterator : public Iterator<TResult>{
 			}
 
 			if(_predicate == nullptr || _predicate(*_current)) {
-				_currentValue = _selector(*_current);
+				this->_currentValue = _selector(*_current);
 				return true;
 			}
 		}
